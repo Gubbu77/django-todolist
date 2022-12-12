@@ -1,0 +1,106 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %}TODOLIST{% endblock title %}
+
+{% block content %}
+    <div class = "wrapper">
+        <h1>To Do List</h1>
+        <form method = "POST">
+            {% csrf_token %}
+            {% for i in list %}
+                <div class = "container">
+                    <div class = "text">
+                        <h3>{{i.name}}</h3>
+                        <p>{{i.title}}</p>
+                        <h6>{{i.timefrom}} to {{i.timeto}}</h6>
+                    </div>
+
+                    <div class='checkBox'>
+
+                        <input class = "check" type="checkbox" name = "doneornot"></input>
+                        <a href="deleteList/{{i.id}}" class="deleteBtn" >Delete</a>
+                         
+                    </div>
+
+                </div>
+            {% endfor %}
+        </form>
+        <div class='buttons'> 
+            <a href="/add" type = 'button' class= "btns">ADD</a>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block style %}
+        .wrapper{
+            width: 100%;
+            padding: 20px;
+        }
+        h1{
+            text-align : center;
+            align-items : center;
+            font-size : 36px;
+
+        }
+        .container{
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            
+            background-color: pink;
+            padding: 20px;
+
+        }
+        .text{
+            width: 80%;
+
+        }
+        .checkBox{
+            display: flex;
+            flex-direction : column;
+            justify-content: center;
+            width: 20%;
+            align-items : center;
+            
+        }
+        .check{
+            width: 15px;
+
+            height: 15px;
+        }
+        .buttons{
+            display: flex;
+            flex-direction : row;
+            justify-content: space-evenly;
+            padding: 10px;
+            text-align : center;
+            align-items : center;
+        }
+        .btns{
+            border-radius: 10px;
+            width: 80px;
+            background-color: cyan;
+            padding : 5px;
+            
+        }
+        .buttons a{
+            color: black;
+            text-decoration: none;
+        }
+
+        .deleteBtn{
+            background-color: pink;
+            border: none;
+            margin-top: 5px;
+            
+        }
+{% endblock style %}
+
+<script type='text/javascript'>
+    function changecolor() {
+        alert("Hello from a static file!");
+      }
+ </script>
