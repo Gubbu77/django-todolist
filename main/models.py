@@ -7,3 +7,4 @@ class Todolist(models.Model):
     timefrom = models.CharField(max_length = 100)
     timeto = models.CharField(max_length = 100)
     done = models.BooleanField(default= False)
+    nothing = models.CharField(max_length = 20)
